@@ -1,0 +1,64 @@
+{
+  "name": "@webship-js/symfony-steps",
+  "version": "2.0.0",
+  "description": "Cucumber step definitions for Symfony apps, a plugin for webship-js (Playwright and Cucumber): the login form and the session, flash messages, the errors under a field, the error pages of a live app, the debug toolbar and the profiler of a development one, a form sent from another site, the language chooser, components that update in place, and the blog, comments, search and back office of the official demo application.",
+  "main": "tests/step-definitions/symfony-session.steps.js",
+  "files": [
+    "tests/step-definitions/",
+    "tests/features/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "cucumber-js --config cucumber.js",
+    "test:dry": "cucumber-js --config cucumber.js --dry-run",
+    "test:examples": "node tests/check-examples.js",
+    "test:paths": "node tests/check-paths.js",
+    "test:must-fail": "node tests/check-must-fail.js",
+    "test:dev-mode": "CUCUMBER_TAGS=@dev-mode cucumber-js --config cucumber.js",
+    "test:chromium": "BROWSER=chromium cucumber-js --config cucumber.js",
+    "test:firefox": "BROWSER=firefox cucumber-js --config cucumber.js",
+    "test:webkit": "BROWSER=webkit cucumber-js --config cucumber.js",
+    "test:headed": "HEADLESS=false cucumber-js --config cucumber.js",
+    "generate-reports": "generate-reports",
+    "test:fast": "SLOW_MO=0 cucumber-js --config cucumber.js"
+  },
+  "keywords": [
+    "webship-js",
+    "symfony",
+    "symfony-demo",
+    "cucumber",
+    "cucumber-js",
+    "playwright",
+    "bdd",
+    "testing",
+    "e2e",
+    "gherkin"
+  ],
+  "author": "Webship.co",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webship/symfony-steps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webship/symfony-steps/issues"
+  },
+  "homepage": "https://github.com/webship/symfony-steps#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 20.0"
+  },
+  "peerDependencies": {
+    "webship-js": "^2.0.16"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.0",
+    "webship-js": "^2.0.16"
+  },
+  "overrides": {
+    "@cucumber/cucumber": "^12"
+  }
+}
