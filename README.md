@@ -12,8 +12,8 @@ one: the form login and the session, the messages a page shows after an action
 (the flash messages), the errors the form themes print under a field, the
 CSRF protection that refuses a forged form, the error pages of a live app, and
 the debug toolbar and the profiler of a development one, with the check that a
-live app shows neither. Second, the official Symfony Demo application, the app
-the framework's own documentation is written around: its blog, the pager and
+live app shows neither. Second, the official Symfony Demo application, the
+reference application of the framework's best practices: its blog, the pager and
 the tags of the list, the comments and the mail an author gets, the search that
 updates while a reader types, the back office (posts written, changed and
 deleted through a confirmation dialog, a tags field, a date picker), the
@@ -45,19 +45,19 @@ SITE_DIR="$PWD/symfony-app" symfony-steps/.github/scripts/build-ddev-site.sh
 
 The app answers at `https://symfonysteps.ddev.site` and its mailbox at `https://symfonysteps.ddev.site:8026`. Its accounts are the demo's own users, `jane_admin` and `john_user` (step 3 names them).
 
-In the [Webship Workspace](https://github.com/webship/workspace), its Symfony plugin builds the same demo instead, in a sites folder of the workspace (`test/` here; `dev/`, `sandboxes/` and `demos/` work the same):
+In the [Webship Workspace](https://github.com/webship/workspace), its Symfony plugin builds the same demo instead, in a sites folder of the workspace (`dev/` here, the one `--with-needs` adds to a new workspace; `test/`, `sandboxes/` and `demos/` work the same):
 
 ```bash
 bash core/scripts/plugins.sh --require symfony --with-needs
 bash core/scripts/plugins.sh --activate symfony --with-needs
 bash core/scripts/plugins.sh --install symfony
-bash test/cmd-symfony-project.sh mysite --install --add-users --demo --production
+bash dev/cmd-symfony-project.sh mysite --install --add-users --demo --production
 ```
 
 That app answers at `https://mysite.ddev.site` and its mailbox at `https://mysite.ddev.site:8026`. `--demo` makes the official demo application (without it the builder makes a new web app), `--install` loads the demo's data, and `--production` runs it as the script's app runs (the error pages, never the debug page or the toolbar). Its accounts are the plugin's: `administrator` (an administrator of the demo) and `user`, each named as its handle, with the workspace's shared password `dD.123123ddd` (step 3 names them); the demo's own users are there too. It has none of the one page the script adds for the 500 page, which one scenario of [`tests/features/framework.feature`](tests/features/framework.feature) and the `@dev-mode` lane open; this adds it, from the workspace folder:
 
 ```bash
-cat > test/mysite/src/Controller/TestFixturesController.php <<'PHPEOF'
+cat > dev/mysite/src/Controller/TestFixturesController.php <<'PHPEOF'
 <?php
 
 // Added by the test app of the webship-js suite: an error nothing catches.
@@ -77,8 +77,10 @@ final class TestFixturesController extends AbstractController
     }
 }
 PHPEOF
-bash test/cmd-tools-symfony-console.sh mysite --run "cache:clear"
+rm -rf dev/mysite/var/cache/prod
 ```
+
+The last line empties the cache of the live app, so its next request reads the new route.
 
 **2. A test project.**
 
@@ -165,7 +167,7 @@ A green first run prints every step, then the summary (the starter feature of `n
 [webship-js] HTML report → …/symfony-tests/tests/reports/cucumber_report.html
 ```
 
-From there, copy the features of [`tests/features/`](tests/features/) (they also ship in the package, under `node_modules/@webship-js/symfony-steps/tests/features/`): together they use every step of the pack. They read no file of their own. On a Workspace app they run as they are, but for the one page of step 1 they need (`/en/test-fixtures/server-error`).
+From there, copy the features of [`tests/features/`](tests/features/) (they also ship in the package, under `node_modules/@webship-js/symfony-steps/tests/features/`): together they use every step of the pack. They read no file of their own. On a Workspace app they run as they are, once the one page of step 1 is added (`/en/test-fixtures/server-error`).
 
 ### What the suite tests
 
