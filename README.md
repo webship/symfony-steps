@@ -12,8 +12,8 @@ one: the form login and the session, the messages a page shows after an action
 (the flash messages), the errors the form themes print under a field, the
 CSRF protection that refuses a forged form, the error pages of a live app, and
 the debug toolbar and the profiler of a development one, with the check that a
-live app shows neither. Second, the official Symfony Demo application, the app
-the framework's own documentation is written around: its blog, the pager and
+live app shows neither. Second, the official Symfony Demo application, the
+reference application of the framework's best practices: its blog, the pager and
 the tags of the list, the comments and the mail an author gets, the search that
 updates while a reader types, the back office (posts written, changed and
 deleted through a confirmation dialog, a tags field, a date picker), the
@@ -167,7 +167,7 @@ A green first run prints every step, then the summary (the starter feature of `n
 [webship-js] HTML report → …/symfony-tests/tests/reports/cucumber_report.html
 ```
 
-From there, copy the features of [`tests/features/`](tests/features/) (they also ship in the package, under `node_modules/@webship-js/symfony-steps/tests/features/`): together they use every step of the pack. They read no file of their own. On a Workspace app they run as they are, but for the one page of step 1 they need (`/en/test-fixtures/server-error`).
+From there, copy the features of [`tests/features/`](tests/features/) (they also ship in the package, under `node_modules/@webship-js/symfony-steps/tests/features/`): together they use every step of the pack. They read no file of their own. On a Workspace app they run as they are, once the one page of step 1 is added (`/en/test-fixtures/server-error`).
 
 ### What the suite tests
 
