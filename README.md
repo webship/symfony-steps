@@ -34,7 +34,7 @@ must fail, then a lane with the app in the dev environment; see
 
 ## From nothing to a green run
 
-What the machine needs: Docker, [DDEV](https://ddev.com), git, python3, and Node.js 20 or later with npm. PHP, Composer, the database and the mail catcher run in DDEV's containers.
+What the machine needs: Docker, [DDEV](https://ddev.com), git, python3, and Node.js 24 or later with npm. PHP, Composer, the database and the mail catcher run in DDEV's containers.
 
 **1. The app.** The pack's own build script (the one CI runs) makes the official demo application in a DDEV project of type `symfony`: `composer create-project symfony/symfony-demo`, the demo's own data loaded with its fixtures into the database DDEV gives the project (the demo's users get addresses at example.com), then the app runs as a live app runs (`APP_ENV=prod`, `APP_DEBUG=0`, its assets compiled). It adds one page of its own, an error nothing catches, for the 500 page. It takes one to three minutes.
 
@@ -177,7 +177,7 @@ Not tested: creating or deleting an account (the suite never does), a password c
 
 ## Requirements
 
-- Node.js 20 or later
+- Node.js 24 or later
 - A webship-js 2.0 test project (webship-js 2.0.16 or later)
 - A Symfony app (the steps for the blog, the comments and the back office are written for the official demo application), and accounts on it for the suite
 
