@@ -1,6 +1,6 @@
 {
   "name": "@webship-js/symfony-steps",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Cucumber step definitions for Symfony apps, a plugin for webship-js (Playwright and Cucumber): the login form and the session, flash messages, the errors under a field, the error pages of a live app, the debug toolbar and the profiler of a development one, a form sent from another site, the language chooser, components that update in place, and the blog, comments, search and back office of the official demo application.",
   "main": "tests/step-definitions/symfony-session.steps.js",
   "files": [
